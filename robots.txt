@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aengusmcguinness.github.io/sitemap.xml
