@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aengus McGuinness</title>
+<meta name="description" content="Software engineer working on systems and infrastructure. Currently at Axilon. Previously Harvard, Los Alamos National Laboratory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --rule: #d8d4cc;
+    --paper: #fbf9f4;
+    --paper-warm: #f3efe6;
+    --accent: #8b2a0c;
+    --serif: 'EB Garamond', 'Georgia', serif;
+    --mono: 'JetBrains Mono', 'Menlo', monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 18px;
+  }
+
+  body {
+    font-family: var(--serif);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    font-feature-settings: "kern", "liga", "onum";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+  }
+
+  /* ---------- Header ---------- */
+
+  header {
+    margin-bottom: 4rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .name {
+    font-size: 2.4rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+
+  .name .ampersand {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .lede {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 38rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .lede em {
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .meta {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .meta a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .meta a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .meta .sep {
+    margin: 0 0.7rem;
+    color: var(--rule);
+  }
+
+  /* ---------- Sections ---------- */
+
+  section {
+    margin-bottom: 3.5rem;
+  }
+
+  h2 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ---------- Entries (work & projects share a structure) ---------- */
+
+  .entry {
+    margin-bottom: 2rem;
+  }
+
+  .entry:last-child {
+    margin-bottom: 0;
+  }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .entry-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  .entry-title a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .entry-title a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .entry-date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .entry-role {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .entry-body {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+
+  .entry-body p + p {
+    margin-top: 0.7rem;
+  }
+
+  .entry-body code {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--ink);
+    background: var(--paper-warm);
+    padding: 0.05rem 0.3rem;
+    border-radius: 2px;
+  }
+
+  .entry-tags {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    margin-top: 0.5rem;
+  }
+
+  .entry-tags span {
+    margin-right: 0.8rem;
+  }
+
+  /* ---------- Pull-out numbers in project descriptions ---------- */
+
+  .num {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    margin-top: 5rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ---------- Small screens ---------- */
+
+  @media (max-width: 600px) {
+    html { font-size: 17px; }
+    .page { padding: 3rem 1.4rem 4rem; }
+    .name { font-size: 2rem; }
+    .entry-head { flex-direction: column; gap: 0.15rem; }
+    .entry-date { font-size: 0.68rem; }
+    .meta { font-size: 0.72rem; }
+    .meta .sep { margin: 0 0.45rem; }
+  }
+
+  /* ---------- Reduced motion ---------- */
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <header>
+    <h1 class="name">Aengus McGuinness</h1>
+    <p class="lede">
+      Software engineer working on <em>systems and infrastructure</em>. Currently building path-critical infrastructure at Axilon. Previously at Los Alamos National Laboratory and the Harvard MCB department, where I spent four years on computational biology and high-performance computing.
+    </p>
+    <p class="lede">
+      I&rsquo;m most interested in the places where careful engineering meets hard scientific or financial problems &mdash; distributed systems, low-latency networking, ML infrastructure, and the layers below.
+    </p>
+    <div class="meta">
+      <a href="https://github.com/AengusMcGuinness">github</a>
+      <span class="sep">/</span>
+      <a href="mailto:amcguinness@college.harvard.edu">email</a>
+      <span class="sep">/</span>
+      <a href="/resume.pdf">resume</a>
+    </div>
+  </header>
+
+
+  <section id="now">
+    <h2>Now</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Axilon</div>
+        <div class="entry-date">2026 &mdash;</div>
+      </div>
+      <div class="entry-role">Software Engineer, New York</div>
+      <div class="entry-body">
+        <p>Joining as an early engineer on path-critical infrastructure. Axilon brings LLMs into industrial operations and engineering workflows; the work sits at the intersection of applied ML, reliability engineering, and customer-specific deployment. Backed by BoxGroup and RTX Ventures.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="before">
+    <h2>Before</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Harvard Generative AI Research Program</div>
+        <div class="entry-date">Summer 2025</div>
+      </div>
+      <div class="entry-role">Research Fellow &middot; Cambridge, MA</div>
+      <div class="entry-body">
+        <p>Designed distributed deep learning pipelines on GPU clusters under SLURM. Integrated Bayesian optimization into existing OpenFold workflows, achieving <span class="num">2&times;</span> validation improvement while keeping execution scalable across compute nodes.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Los Alamos National Laboratory, B-GEN</div>
+        <div class="entry-date">2022 &ndash; 2024</div>
+      </div>
+      <div class="entry-role">Student Researcher &middot; Santa Fe, NM</div>
+      <div class="entry-body">
+        <p>Optimized distributed HPC pipelines processing terabyte-scale biological datasets on SLURM clusters. Reduced workflow runtime by <span class="num">80%</span> through parallelization, memory tuning, and GPU-accelerated data processing modules.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="projects">
+    <h2>Selected Projects</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title"><a href="https://github.com/AengusMcGuinness/CS2640-Final-Project">RCache-RDMA</a></div>
+        <div class="entry-date">2026</div>
+      </div>
+      <div class="entry-role">One-sided RDMA distributed cache &middot; C++, <code>libibverbs</code></div>
+      <div class="entry-body">
+        <p>A key-value cache with three communication paths &mdash; TCP/RPC, two-sided RDMA, and one-sided RDMA reads over a registered hash-table memory region. The one-sided path bypasses server CPU entirely.</p>
+        <p>On CloudLab Mellanox hardware: <span class="num">974k ops/s</span> with stable <span class="num">12 &mu;s</span> p99 latency on one-sided reads &mdash; a <span class="num">13&times;</span> throughput improvement and <span class="num">20&times;</span> tail-latency reduction over the TCP baseline. Adding RDMA <code>FETCH_AND_ADD</code> atomics for recency tracking imposes a consistent <span class="num">3&ndash;4 &mu;s</span> p99 penalty, isolating the cost of cache-policy maintenance on the read path.</p>
+      </div>
+      <div class="entry-tags">
+        <span>RDMA</span><span>distributed systems</span><span>performance</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title"><a href="https://github.com/AengusMcGuinness/1411-Project">Adaptive Stream Buffer Prefetcher</a></div>
+        <div class="entry-date">2026</div>
+      </div>
+      <div class="entry-role">Hardware prefetcher simulation &middot; C++, Intel Pin</div>
+      <div class="entry-body">
+        <p>A two-phase study of hardware prefetching via stream buffers: Jouppi&rsquo;s original fixed-depth design and Palacharla &amp; Kessler&rsquo;s adaptive extension, both implemented as Intel Pin tools with a two-level cache hierarchy and explicit latency model.</p>
+        <p>The adaptive policy learns stream-length distributions online via a histogram and chooses prefetch depth dynamically. Across SPEC CPU2006 workloads it achieves <span class="num">5.02&times;</span> speedup on libquantum and <span class="num">83%</span> prefetch accuracy on dealII (versus 78% for static next-line), while reducing wasted memory bandwidth on irregular workloads by an order of magnitude. Total hardware cost: 250&ndash;400 bytes.</p>
+      </div>
+      <div class="entry-tags">
+        <span>computer architecture</span><span>simulation</span><span>SPEC CPU2006</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">High-Performance Async RPC Client</div>
+        <div class="entry-date">2026</div>
+      </div>
+      <div class="entry-role">Distributed systems project &middot; C++, gRPC</div>
+      <div class="entry-body">
+        <p>An asynchronous RPC client built around gRPC completion queues and a multi-threaded polling architecture. Increased throughput from ~8k to <span class="num">55k+ RPC/s</span> via batching, non-blocking I/O, and flow-control tuning.</p>
+      </div>
+      <div class="entry-tags">
+        <span>networking</span><span>concurrency</span><span>gRPC</span>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="writing">
+    <h2>Writing</h2>
+    <div class="entry">
+      <div class="entry-body">
+        <p style="color: var(--ink-faint); font-style: italic;">Coming soon.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div>Aengus McGuinness</div>
+    <div>Last updated May 2026</div>
+  </footer>
+
+</main>
+
+</body>
+</html>
