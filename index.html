@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aengus McGuinness</title>
-<meta name="description" content="Software engineer working on systems and infrastructure. Currently at Axilon. Previously Harvard, Los Alamos National Laboratory.">
+<meta name="description" content="Software engineer working on C++ systems and infrastructure. Currently at Ironsite (SF). Previously Harvard, Los Alamos National Laboratory.">
 <link rel="canonical" href="https://aengusmcguinness.github.io/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Aengus McGuinness">
-<meta property="og:description" content="Software engineer working on systems and infrastructure. Currently at Axilon. Previously Harvard, Los Alamos National Laboratory.">
+<meta property="og:description" content="Software engineer working on C++ systems and infrastructure. Currently at Ironsite (SF). Previously Harvard, Los Alamos National Laboratory.">
 <meta property="og:url" content="https://aengusmcguinness.github.io/">
 <meta property="og:site_name" content="Aengus McGuinness">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Aengus McGuinness">
-<meta name="twitter:description" content="Software engineer working on systems and infrastructure. Currently at Axilon. Previously Harvard, Los Alamos National Laboratory.">
+<meta name="twitter:description" content="Software engineer working on C++ systems and infrastructure. Currently at Ironsite (SF). Previously Harvard, Los Alamos National Laboratory.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,6 +243,58 @@
     font-weight: 500;
   }
 
+  /* ---------- Action links (report PDFs, code links) ---------- */
+
+  .entry-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 0.5rem 0.85rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
+  }
+
+  .action-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--paper);
+    transform: translateY(-1px);
+  }
+
+  .action-link .arrow {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    line-height: 1;
+    font-style: italic;
+  }
+
+  .action-link.report {
+    color: var(--ink);
+    font-weight: 500;
+    border-color: var(--ink-faint);
+  }
+
+  .action-link.report:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
   /* ---------- Footer ---------- */
 
   footer {
@@ -288,10 +340,10 @@
   <header>
     <h1 class="name">Aengus McGuinness</h1>
     <p class="lede">
-      Software engineer working on <em>systems and infrastructure</em>. Currently building path-critical infrastructure at Axilon. Previously at Los Alamos National Laboratory and the Harvard MCB department, where I spent four years on computational biology and high-performance computing.
+      I build <em>C++ systems where latency matters</em>. Currently at Ironsite in San Francisco &mdash; distributed GPU clusters, RDMA fabric, cross-cloud scheduling for AI research teams running large training workloads. Previously at Los Alamos National Laboratory and the Harvard MCB department, where I spent four years on computational biology and high-performance computing.
     </p>
     <p class="lede">
-      I&rsquo;m most interested in the places where careful engineering meets hard real-world problems &mdash; distributed systems, low-latency networking, ML infrastructure, and the layers below.
+      I&rsquo;m most interested in problems where p99 is the constraint &mdash; low-latency networking, lock-free data structures, query engines, inference serving, and the layers below.
     </p>
     <div class="meta">
       <a href="https://github.com/AengusMcGuinness" rel="noopener noreferrer">github</a>
@@ -308,12 +360,12 @@
 
     <div class="entry">
       <div class="entry-head">
-        <div class="entry-title">Axilon</div>
+        <div class="entry-title">Ironsite</div>
         <div class="entry-date">2026 &mdash;</div>
       </div>
-      <div class="entry-role">Software Engineer, New York</div>
+      <div class="entry-role">Member of Technical Staff &middot; San Francisco</div>
       <div class="entry-body">
-        <p>Joining as an early engineer on path-critical infrastructure. Axilon brings LLMs into industrial operations and engineering workflows; the work sits at the intersection of applied ML, reliability engineering, and customer-specific deployment. Backed by BoxGroup and RTX Ventures.</p>
+        <p>Building distributed AI infrastructure that unifies GPU clusters and cloud providers &mdash; enabling researchers to schedule and execute large-scale training workloads across heterogeneous compute environments.</p>
       </div>
     </div>
   </section>
@@ -351,13 +403,17 @@
 
     <div class="entry">
       <div class="entry-head">
-        <div class="entry-title"><a href="https://github.com/AengusMcGuinness/CS2640-Final-Project" rel="noopener noreferrer">RCache-RDMA</a></div>
+        <div class="entry-title">RCache-RDMA</div>
         <div class="entry-date">2026</div>
       </div>
-      <div class="entry-role">One-sided RDMA distributed cache &middot; C++, <code>libibverbs</code> &middot; <a href="/2640-report.pdf">report</a></div>
+      <div class="entry-role">One-sided RDMA distributed cache &middot; C++, <code>libibverbs</code></div>
       <div class="entry-body">
         <p>A key-value cache with three communication paths &mdash; TCP/RPC, two-sided RDMA, and one-sided RDMA reads over a registered hash-table memory region. The one-sided path bypasses server CPU entirely.</p>
         <p>On CloudLab Mellanox hardware: <span class="num">974k ops/s</span> with stable <span class="num">12 &mu;s</span> p99 latency on one-sided reads &mdash; a <span class="num">13&times;</span> throughput improvement and <span class="num">20&times;</span> tail-latency reduction over the TCP baseline. Adding RDMA <code>FETCH_AND_ADD</code> atomics for recency tracking imposes a consistent <span class="num">3&ndash;4 &mu;s</span> p99 penalty, isolating the cost of cache-policy maintenance on the read path.</p>
+      </div>
+      <div class="entry-actions">
+        <a href="/2640-report.pdf" class="action-link report">Read report <span class="arrow">&rarr;</span></a>
+        <a href="https://github.com/AengusMcGuinness/CS2640-Final-Project" class="action-link" rel="noopener noreferrer">View code <span class="arrow">&#8599;</span></a>
       </div>
       <div class="entry-tags">
         <span>RDMA</span><span>distributed systems</span><span>performance</span>
@@ -366,13 +422,17 @@
 
     <div class="entry">
       <div class="entry-head">
-        <div class="entry-title"><a href="https://github.com/AengusMcGuinness/1411-Project" rel="noopener noreferrer">Adaptive Stream Buffer Prefetcher</a></div>
+        <div class="entry-title">Adaptive Stream Buffer Prefetcher</div>
         <div class="entry-date">2026</div>
       </div>
-      <div class="entry-role">Hardware prefetcher simulation &middot; C++, Intel Pin &middot; <a href="/1411-report.pdf">report</a></div>
+      <div class="entry-role">Hardware prefetcher simulation &middot; C++, Intel Pin</div>
       <div class="entry-body">
         <p>A two-phase study of hardware prefetching via stream buffers: Jouppi&rsquo;s original fixed-depth design and Palacharla &amp; Kessler&rsquo;s adaptive extension, both implemented as Intel Pin tools with a two-level cache hierarchy and explicit latency model.</p>
         <p>The adaptive policy learns stream-length distributions online via a histogram and chooses prefetch depth dynamically. Across SPEC CPU2006 workloads it achieves <span class="num">5.02&times;</span> speedup on libquantum and <span class="num">83%</span> prefetch accuracy on dealII (versus 78% for static next-line), while reducing wasted memory bandwidth on irregular workloads by an order of magnitude. Total hardware cost: 250&ndash;400 bytes.</p>
+      </div>
+      <div class="entry-actions">
+        <a href="/1411-report.pdf" class="action-link report">Read report <span class="arrow">&rarr;</span></a>
+        <a href="https://github.com/AengusMcGuinness/1411-Project" class="action-link" rel="noopener noreferrer">View code <span class="arrow">&#8599;</span></a>
       </div>
       <div class="entry-tags">
         <span>computer architecture</span><span>simulation</span><span>SPEC CPU2006</span>
@@ -392,6 +452,21 @@
         <span>networking</span><span>concurrency</span><span>gRPC</span>
       </div>
     </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Chickadee OS Kernel</div>
+        <div class="entry-date">2026</div>
+      </div>
+      <div class="entry-role">Operating systems project &middot; C++</div>
+      <div class="entry-body">
+        <p>Implemented blocking system calls (<code>sys_waitpid</code>, <code>sys_msleep</code>) in the Chickadee teaching kernel by redesigning scheduler interactions and eliminating busy-wait loops.</p>
+        <p>Built a timer-driven sleep mechanism using a hashed timing structure, maintaining correctness under multi-core execution and preventing lost wakeups and race conditions.</p>
+      </div>
+      <div class="entry-tags">
+        <span>kernel</span><span>scheduling</span><span>concurrency</span>
+      </div>
+    </div>
   </section>
 
 
@@ -407,7 +482,7 @@
 
   <footer>
     <div>Aengus McGuinness</div>
-    <div>Last updated May 2026</div>
+    <div>Last updated June 2026</div>
   </footer>
 
 </main>
