@@ -1,0 +1,44 @@
+name: Build resume
+
+# Only runs when the resume source (or this workflow) changes, so the PDF is
+# not rebuilt and recommitted on every unrelated site edit.
+on:
+  push:
+    paths:
+      - 'resume/AengusResume.tex'
+      - 'resume/check-resume.sh'
+      - '.github/workflows/resume.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile AengusResume.tex
+        uses: xu-cheng/latex-action@v4
+        with:
+          working_directory: resume
+          root_file: AengusResume.tex
+
+      - name: Publish as resume.pdf
+        run: mv resume/AengusResume.pdf resume.pdf
+
+      - name: Run resume checks
+        run: ./resume/check-resume.sh
+
+      - name: Commit rebuilt PDF
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- resume.pdf; then
+            echo "resume.pdf unchanged; nothing to commit"
+          else
+            git add resume.pdf
+            git commit -m "Rebuild resume.pdf from source"
+            git push
+          fi

@@ -1,0 +1,187 @@
+%-------------------------
+% Resume in LaTeX
+% Based on: Jake Gutierrez's "Jake's Resume" template
+% https://github.com/jakegut/resume  (MIT License)
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated pdf is machine readable / ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Aengus McGuinness} \\ \vspace{3pt}
+    \small (805) 570-1436 $|$
+    \href{mailto:amcguinness@college.harvard.edu}{\underline{amcguinness@college.harvard.edu}} $|$
+    \href{https://github.com/AengusMcGuinness}{\underline{github.com/AengusMcGuinness}} $|$
+    \href{https://aengusmcguinness.com}{\underline{aengusmcguinness.com}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Harvard College}{Cambridge, MA}
+      {A.B. Computer Science --- GPA 3.88 / ACT 35, John Harvard Scholar}{Expected May 2027}
+      \resumeItemListStart
+        \resumeItem{\textbf{Completed:} Distributed Computing, Operating Systems, Modern Storage Systems, Computer Architecture, Systems Programming \& Machine Organization, Computing Hardware, Machine Learning, Algorithms, Probability}
+        \resumeItem{\textbf{Fall 2026:} Computing at Scale, Advanced Computer Networks, Advanced Topics in Computer Architecture, Systems Security, Modern AI Systems}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Ironsite}{San Francisco, CA}
+      {ML Infrastructure Engineering Intern --- 51 PRs in 10 weeks}{June 2026 -- Aug 2026}
+      \resumeItemListStart
+        \resumeItem{Built and productionized the company's GPU inference platform --- a self-hosted multimodal LLM on vLLM over autoscaled GCP spot fleets, $\sim$10k lines of Terraform/Packer/Ansible --- completing \textbf{61k+ production video inferences} in five weeks; pre-hydrated weight disks cut per-worker model load \textbf{8$\times$} (7~min $\rightarrow$ 53~s).}
+        \resumeItem{Colocated the inference engine inside each 8-GPU worker, deleting the load-balancer tier; gated the cutover on prompt-token parity against the live fleet and a crash drill proving exactly-once processing under spot preemption.}
+        \resumeItem{Grew production ML throughput \textbf{3.3$\times$} in five weeks (4.7k $\rightarrow$ 15.3k videos/week) while raising end-of-day pipeline completion from $\sim$80\% to \textbf{97--99.8\%} on 60\% higher daily intake.}
+        \resumeItem{Designed cross-cloud data-residency enforcement (US-only vs.\ global) across \textbf{7 compute providers}: per-region queue pairs, fail-closed verification of provider-reported placement, and IAM session-policy denial --- unblocking a major enterprise customer, zero placement violations at rollout.}
+        \resumeItem{Hardened capacity acquisition and cost control: zonal fallback for spot stockouts (a 156-retry regional stall became first-try placement), metric-based idle-GPU detection bounding a $\sim$\$1.3k/incident burn to $\sim$15~min, MIG autohealing, and preemption alerting that absorbed \textbf{254 spot preemptions}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Harvard Generative AI Research Program}{Cambridge, MA}
+      {Research Fellow}{June 2025 -- Aug 2025}
+      \resumeItemListStart
+        \resumeItem{Authored the SLURM automation toolkit for a GPU protein-structure refinement pipeline (OpenFold/ROCKET on A100s) --- MSA generation and clustering, X-ray data prep, config-driven refinement sweeps, scoring --- turning a hand-run multi-day workflow into reproducible one-command job submissions now used by the lab.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Los Alamos National Laboratory, B-GEN}{Santa Fe, NM}
+      {Student Researcher}{Summers 2022 -- 2024}
+      \resumeItemListStart
+        \resumeItem{Cut terabyte-scale genomics pipeline runtime $\sim$80\% via SLURM parallelization, memory tuning, and GPU offload of throughput-bound stages.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Systems \& Performance Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+        {\textbf{RCache --- One-Sided RDMA Distributed Cache} $|$ \emph{C++, libibverbs} $|$ \href{https://github.com/AengusMcGuinness/CS2640-Final-Project}{\underline{code}}}{Solo $\cdot$ Spring 2026}
+        \resumeItemListStart
+          \resumeItem{Built a key-value cache with three transports over \texttt{libibverbs}: a TCP/RPC baseline, two-sided RDMA send/recv, and one-sided reads served straight out of a registered hash-table memory region, with an optional RDMA \texttt{FETCH\_AND\_ADD} maintaining LRU recency metadata without server CPU involvement.}
+          \resumeItem{Across three CloudLab trials on Mellanox hardware, one-sided reads sustained \textbf{974k ops/s} at 8 clients with a flat \textbf{12~$\mu$s p99} --- \textbf{13$\times$} the throughput and \textbf{13$\times$} lower tail latency than TCP (157~$\mu$s p99) --- and isolated the metadata atomic's cost at 3--4~$\mu$s p99: recency tracking stays on the critical path even when reads leave it.}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Chickadee OS Kernel} $|$ \emph{C++, x86-64}}{Spring 2026}
+        \resumeItemListStart
+          \resumeItem{Implemented blocking system calls (\texttt{sys\_waitpid}, \texttt{sys\_msleep}) with a timer-driven sleep mechanism backed by a hashed timing wheel, removing busy-wait loops while preserving correctness under multi-core preemption.}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{Stream Buffer Prefetcher} $|$ \emph{C++, Intel Pin} $|$ \href{https://github.com/AengusMcGuinness/1411-Project}{\underline{code}}}{Team of 4 $\cdot$ Spring 2026}
+        \resumeItemListStart
+          \resumeItem{Built a Pin-based memory-hierarchy simulator implementing Jouppi's fixed-depth stream buffer; sweeping depth $\times$ stream count over SPEC CPU2006 showed \texttt{libquantum}'s effective L1D misses collapse \textbf{43$\times$} while irregular workloads gain $\sim$2\% for up to \textbf{9$\times$} the L2 traffic --- the bandwidth-waste finding that motivated the team's adaptive-depth follow-on.}
+          \resumeItem{Wrote the Pin harness and resume-on-kill parallel sweep driver (72 configs) used to evaluate that adaptive policy: \textbf{5.02$\times$} speedup on \texttt{libquantum}, prefetch accuracy 78\% $\rightarrow$ \textbf{83\%} on \texttt{dealII}.}
+        \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C++, Rust, Python, Bash, SQL} \\
+     \textbf{Systems}{: Linux, concurrency, distributed systems, low-latency networking, RDMA (\texttt{libibverbs}), kernel development, Intel Pin} \\
+     \textbf{Infrastructure}{: AWS, GCP, Terraform/OpenTofu, Ansible, Docker Swarm, SLURM, vLLM, gRPC, Prometheus, Postgres}
+    }}
+ \end{itemize}
+
+
+\end{document}
