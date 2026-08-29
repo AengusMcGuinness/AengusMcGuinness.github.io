@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aengus McGuinness</title>
-<meta name="description" content="Software engineer working on C++ systems and infrastructure. Currently at Ironsite (SF). Previously Harvard, Los Alamos National Laboratory.">
-<link rel="canonical" href="https://aengusmcguinness.github.io/">
+<meta name="description" content="Harvard CS senior working on C++ systems and infrastructure. Summer 2026: ML infrastructure at Ironsite (SF). Previously Los Alamos National Laboratory.">
+<link rel="canonical" href="https://aengusmcguinness.com/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Aengus McGuinness">
-<meta property="og:description" content="Software engineer working on C++ systems and infrastructure. Currently at Ironsite (SF). Previously Harvard, Los Alamos National Laboratory.">
-<meta property="og:url" content="https://aengusmcguinness.github.io/">
+<meta property="og:description" content="Harvard CS senior working on C++ systems and infrastructure. Summer 2026: ML infrastructure at Ironsite (SF). Previously Los Alamos National Laboratory.">
+<meta property="og:url" content="https://aengusmcguinness.com/">
 <meta property="og:site_name" content="Aengus McGuinness">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Aengus McGuinness">
-<meta name="twitter:description" content="Software engineer working on C++ systems and infrastructure. Currently at Ironsite (SF). Previously Harvard, Los Alamos National Laboratory.">
+<meta name="twitter:description" content="Harvard CS senior working on C++ systems and infrastructure. Summer 2026: ML infrastructure at Ironsite (SF). Previously Los Alamos National Laboratory.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -340,7 +340,7 @@
   <header>
     <h1 class="name">Aengus McGuinness</h1>
     <p class="lede">
-      I build <em>C++ systems where latency matters</em>. Currently at Ironsite in San Francisco &mdash; distributed GPU clusters, RDMA fabric, cross-cloud scheduling for AI research teams running large training workloads. Previously at Los Alamos National Laboratory and the Harvard MCB department, where I spent four years on computational biology and high-performance computing.
+      I build <em>C++ systems where latency matters</em>. I&rsquo;m a senior at Harvard studying computer science. This past summer I built GPU inference and training infrastructure at Ironsite in San Francisco &mdash; autoscaled model serving, cross-cloud scheduling, and the capacity systems underneath it. Previously at Los Alamos National Laboratory and the Harvard MCB department, where I spent four years on computational biology and high-performance computing.
     </p>
     <p class="lede">
       I&rsquo;m most interested in problems where p99 is the constraint &mdash; low-latency networking, lock-free data structures, query engines, inference serving, and the layers below.
@@ -360,12 +360,12 @@
 
     <div class="entry">
       <div class="entry-head">
-        <div class="entry-title">Ironsite</div>
-        <div class="entry-date">2026 &mdash;</div>
+        <div class="entry-title">Harvard College</div>
+        <div class="entry-date">2023 &ndash; 2027</div>
       </div>
-      <div class="entry-role">Member of Technical Staff &middot; San Francisco</div>
+      <div class="entry-role">A.B. Computer Science &middot; Cambridge, MA</div>
       <div class="entry-body">
-        <p>Building distributed AI infrastructure that unifies GPU clusters and cloud providers &mdash; enabling researchers to schedule and execute large-scale training workloads across heterogeneous compute environments.</p>
+        <p>Senior, graduating May 2027. This fall: Computing at Scale, Advanced Computer Networks, Advanced Topics in Computer Architecture, Systems Security, and Modern AI Systems.</p>
       </div>
     </div>
   </section>
@@ -376,12 +376,23 @@
 
     <div class="entry">
       <div class="entry-head">
+        <div class="entry-title">Ironsite</div>
+        <div class="entry-date">Summer 2026</div>
+      </div>
+      <div class="entry-role">ML Infrastructure Engineering Intern &middot; San Francisco</div>
+      <div class="entry-body">
+        <p>Built and productionized the GPU inference platform serving Ironsite&rsquo;s self-hosted multimodal LLM &mdash; vLLM over autoscaled cloud spot fleets, plus the capacity, data-residency, and observability systems underneath it. Production throughput grew <span class="num">3.3&times;</span> over five weeks while end-of-day pipeline completion rose from ~80% to <span class="num">97&ndash;99.8%</span> on higher intake.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
         <div class="entry-title">Harvard Generative AI Research Program</div>
         <div class="entry-date">Summer 2025</div>
       </div>
       <div class="entry-role">Research Fellow &middot; Cambridge, MA</div>
       <div class="entry-body">
-        <p>Designed distributed deep learning pipelines on GPU clusters under SLURM. Integrated Bayesian optimization into existing OpenFold workflows, achieving <span class="num">2&times;</span> validation improvement while keeping execution scalable across compute nodes.</p>
+        <p>Authored the SLURM automation toolkit for a GPU protein-structure refinement pipeline (OpenFold/ROCKET on A100s) &mdash; MSA generation and clustering, X-ray data preparation, config-driven refinement sweeps, and scoring &mdash; turning a hand-run multi-day workflow into reproducible one-command job submissions now used by the lab.</p>
       </div>
     </div>
 
@@ -409,7 +420,7 @@
       <div class="entry-role">One-sided RDMA distributed cache &middot; C++, <code>libibverbs</code></div>
       <div class="entry-body">
         <p>A key-value cache with three communication paths &mdash; TCP/RPC, two-sided RDMA, and one-sided RDMA reads over a registered hash-table memory region. The one-sided path bypasses server CPU entirely.</p>
-        <p>On CloudLab Mellanox hardware: <span class="num">974k ops/s</span> with stable <span class="num">12 &mu;s</span> p99 latency on one-sided reads &mdash; a <span class="num">13&times;</span> throughput improvement and <span class="num">20&times;</span> tail-latency reduction over the TCP baseline. Adding RDMA <code>FETCH_AND_ADD</code> atomics for recency tracking imposes a consistent <span class="num">3&ndash;4 &mu;s</span> p99 penalty, isolating the cost of cache-policy maintenance on the read path.</p>
+        <p>On CloudLab Mellanox hardware: <span class="num">974k ops/s</span> with stable <span class="num">12 &mu;s</span> p99 latency on one-sided reads &mdash; a <span class="num">13&times;</span> throughput improvement and <span class="num">13&times;</span> tail-latency reduction over the TCP baseline (157 &mu;s p99). Adding RDMA <code>FETCH_AND_ADD</code> atomics for recency tracking imposes a consistent <span class="num">3&ndash;4 &mu;s</span> p99 penalty, isolating the cost of cache-policy maintenance on the read path.</p>
       </div>
       <div class="entry-actions">
         <a href="/2640-report.pdf" class="action-link report">Read report <span class="arrow">&rarr;</span></a>
@@ -425,10 +436,10 @@
         <div class="entry-title">Adaptive Stream Buffer Prefetcher</div>
         <div class="entry-date">2026</div>
       </div>
-      <div class="entry-role">Hardware prefetcher simulation &middot; C++, Intel Pin</div>
+      <div class="entry-role">Hardware prefetcher simulation &middot; C++, Intel Pin &middot; team of 4</div>
       <div class="entry-body">
-        <p>A two-phase study of hardware prefetching via stream buffers: Jouppi&rsquo;s original fixed-depth design and Palacharla &amp; Kessler&rsquo;s adaptive extension, both implemented as Intel Pin tools with a two-level cache hierarchy and explicit latency model.</p>
-        <p>The adaptive policy learns stream-length distributions online via a histogram and chooses prefetch depth dynamically. Across SPEC CPU2006 workloads it achieves <span class="num">5.02&times;</span> speedup on libquantum and <span class="num">83%</span> prefetch accuracy on dealII (versus 78% for static next-line), while reducing wasted memory bandwidth on irregular workloads by an order of magnitude. Total hardware cost: 250&ndash;400 bytes.</p>
+        <p>A two-phase study of hardware prefetching via stream buffers. I built phase one: a Pin-based simulator of Jouppi&rsquo;s fixed-depth stream buffer, swept over prefetch depth and stream count. It showed libquantum&rsquo;s effective L1D misses collapse <span class="num">43&times;</span> while irregular workloads gain ~2% for up to <span class="num">9&times;</span> the L2 traffic &mdash; the bandwidth-waste result that motivated phase two.</p>
+        <p>Phase two, a team extension, added Palacharla &amp; Kessler&rsquo;s adaptive policy, which learns stream-length distributions online and picks prefetch depth dynamically. I wrote the Pin harness and the parallel, resume-on-kill sweep driver used to evaluate it: <span class="num">5.02&times;</span> speedup on libquantum and <span class="num">83%</span> prefetch accuracy on dealII, versus 78% for static next-line.</p>
       </div>
       <div class="entry-actions">
         <a href="/1411-report.pdf" class="action-link report">Read report <span class="arrow">&rarr;</span></a>
@@ -482,7 +493,7 @@
 
   <footer>
     <div>Aengus McGuinness</div>
-    <div>Last updated June 2026</div>
+    <div>Last updated August 2026</div>
   </footer>
 
 </main>
