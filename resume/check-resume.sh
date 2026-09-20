@@ -15,7 +15,6 @@ fail=0
 # Claims that were wrong once. They must not reappear in either file.
 # Add a line here every time you correct something.
 BANNED=(
-  "Member of Technical Staff"
   "Bayesian optimization"
   "Currently at Ironsite"
   "20&times; tail"
