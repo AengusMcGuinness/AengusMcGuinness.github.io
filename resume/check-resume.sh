@@ -17,6 +17,8 @@ fail=0
 BANNED=(
   "Bayesian optimization"
   "Currently at Ironsite"
+  "on leave"
+  "June 2026 -- Present"
   "20&times; tail"
   '20$\times$ tail'
   "TypeScript"
